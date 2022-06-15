@@ -2,20 +2,35 @@ const { RichText } = require('prismic-dom')
 const Prism = require('prismjs')
 const _ = require('lodash')
 require('prismjs/components/prism-javascript')
+require('prismjs/components/prism-typescript')
 require('prismjs/components/prism-css')
 require('prismjs/components/prism-scss')
 require('prismjs/components/prism-jsx')
 require('prismjs/components/prism-bash')
 require('prismjs/components/prism-json')
+require('prismjs/components/prism-yaml')
 require('prismjs/components/prism-diff')
 require('prismjs/components/prism-markdown')
 require('prismjs/components/prism-graphql')
+require('prismjs/components/prism-markup')
 
 const { Elements } = RichText
 
 // Arrays of the labels I use on Prismic.io
 const codeInline = ['text']
-const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
+const codeBlock = [
+  'javascript',
+  'typescript',
+  'css',
+  'scss',
+  'jsx',
+  'bash',
+  'json',
+  'diff',
+  'markdown',
+  'graphql',
+  'yaml',
+]
 
 const htmlSerializer = (type, element, content) => {
   switch (type) {
@@ -42,7 +57,11 @@ const htmlSerializer = (type, element, content) => {
           Prism.languages[element.label]
         )}</code></pre></div>`
       }
-      return null
+
+      return `<div class="lekoarts-highlight" data-language="markup"><pre class="language-markup"><code class="language-markup">${Prism.highlight(
+        element.text,
+        Prism.languages.markup
+      )}</code></pre></div>`
     }
     case Elements.heading2: {
       return `<h2 id="${_.kebabCase(element.text)}"><a href="#${_.kebabCase(element.text)}" aria-label="${

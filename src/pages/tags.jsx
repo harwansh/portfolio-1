@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { Container, Layout, SkipNavContent, FadeIn } from 'elements'
 import { Footer, Header, Tags } from 'components'
 import config from '../../config/website'
@@ -17,7 +17,7 @@ const TagsContainer = styled(Container)`
 `
 
 const TagsPage = ({ data: { tags, posts }, pageContext: { locale }, location }) => {
-  const allTags = tags.edges.map(tag => tag.node.data.tag)
+  const allTags = tags.edges.map((tag) => tag.node.data.tag)
 
   return (
     <Layout locale={locale} pathname={location.pathname}>

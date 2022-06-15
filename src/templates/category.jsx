@@ -2,14 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { Container, Layout, LocalizedLink, SkipNavContent, FadeIn } from 'elements'
 import { Footer, Header, ItemTagCategory } from 'components'
 import config from '../../config/website'
 import { LocaleConsumer } from '../elements/Layout'
 
 const StyledLink = styled(LocalizedLink)`
-  color: ${props => props.theme.colors.white.light};
+  color: ${(props) => props.theme.colors.white.light};
 `
 
 const Category = ({
@@ -64,7 +64,7 @@ const Category = ({
             <SkipNavContent>
               <FadeIn>
                 <Container>
-                  {edges.map(edge => (
+                  {edges.map((edge) => (
                     <ItemTagCategory
                       key={edge.node.uid}
                       title={edge.node.data.title.text}

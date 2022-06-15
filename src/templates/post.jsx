@@ -9,7 +9,7 @@ import ReactDisqusComments from 'react-disqus-comments'
 import { Container, Content, Wave, Line, Layout, Hero, InfoText, LocalizedLink, Button } from 'elements'
 import { hide } from 'styles'
 import { SEO, Tags, Suggestions, Footer } from 'components'
-import { localizedDate } from 'utilities'
+import localizedDate from 'utilities/localizedDate'
 import { LocaleConsumer } from '../elements/Layout'
 import { Tag } from '../components/Tags'
 
@@ -36,20 +36,20 @@ const Wrapper = styled.header`
   height: 600px;
   position: relative;
   overflow: hidden;
-  background: ${props => props.theme.colors.secondary.dark};
+  background: ${(props) => props.theme.colors.secondary.dark};
   .gatsby-image-wrapper {
     height: 600px;
     img {
       animation: ${pulse} 30s infinite;
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.m}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.m}) {
     height: 500px;
     .gatsby-image-wrapper {
       height: 500px;
     }
   }
-  @media (max-width: ${props => props.theme.breakpoints.s}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.s}) {
     height: 400px;
     .gatsby-image-wrapper {
       height: 400px;
@@ -59,17 +59,17 @@ const Wrapper = styled.header`
 
 const Information = styled(animated.div)`
   margin-top: 2rem;
-  font-family: ${props => props.theme.fontFamily.heading};
+  font-family: ${(props) => props.theme.fontFamily.heading};
   a {
-    color: ${props => props.theme.colors.white.base};
+    color: ${(props) => props.theme.colors.white.base};
     transition: all 0.4s;
     border-bottom: 1px solid transparent;
     &:hover {
-      border-bottom: 1px solid ${props => props.theme.colors.white.base};
-      color: ${props => props.theme.colors.white.base};
+      border-bottom: 1px solid ${(props) => props.theme.colors.white.base};
+      color: ${(props) => props.theme.colors.white.base};
     }
     &:focus {
-      color: ${props => props.theme.colors.white.base};
+      color: ${(props) => props.theme.colors.white.base};
     }
   }
 `
@@ -112,7 +112,7 @@ const TagsInnerContainer = styled.div`
 `
 
 const StyledTag = styled(Tag)`
-  background: ${props => props.theme.colors.secondary.light};
+  background: ${(props) => props.theme.colors.secondary.light};
   font-weight: 600;
 `
 
@@ -125,7 +125,7 @@ const Post = ({ pageContext: { left, right, locale }, data: { prismicBlogpost: p
   const { fluid } = post.cover.localFile.childImageSharp
   let tags = false
   if (post.tags[0].tag) {
-    tags = post.tags.map(tag => tag.tag.document[0].data.tag)
+    tags = post.tags.map((tag) => tag.tag.document[0].data.tag)
   }
 
   // Disqus
@@ -271,7 +271,7 @@ export const pageQuery = graphql`
         cover {
           localFile {
             childImageSharp {
-              fluid(maxWidth: 1920, quality: 90, duotone: { highlight: "#EE9338", shadow: "#d17c26" }) {
+              fluid(maxWidth: 1920, quality: 95, duotone: { highlight: "#EE9338", shadow: "#d17c26" }) {
                 ...GatsbyImageSharpFluid_withWebp
               }
               resize(width: 1200, quality: 90) {
@@ -330,7 +330,7 @@ export const pageQuery = graphql`
               image {
                 localFile {
                   childImageSharp {
-                    fluid(maxWidth: 1200, quality: 90) {
+                    fluid(maxWidth: 1200, quality: 95) {
                       ...GatsbyImageSharpFluid_withWebp
                     }
                   }

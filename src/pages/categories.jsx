@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import { Container, Layout, SkipNavContent, FadeIn } from 'elements'
 import { Footer, Header, Tags } from 'components'
 import { LocaleConsumer } from '../elements/Layout'
@@ -17,7 +17,7 @@ const CategoriesContainer = styled(Container)`
 `
 
 const Categories = ({ data: { categories, posts }, pageContext: { locale }, location }) => {
-  const allCategories = categories.edges.map(category => category.node.data.kategorie)
+  const allCategories = categories.edges.map((category) => category.node.data.kategorie)
 
   return (
     <Layout locale={locale} pathname={location.pathname}>
